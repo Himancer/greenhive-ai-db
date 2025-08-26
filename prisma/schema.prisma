@@ -1,0 +1,62 @@
+
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+generator client { provider = "prisma-client-js" }
+
+model Plant {
+  id          String   @id @default(cuid())
+  commonName  String
+  scientific  String   @unique
+  summary     String?
+  family      String?
+  genus       String?
+  difficulty  String?
+  light       String?
+  water       String?
+  humidity    String?
+  soil        String?
+  temperature String?
+  petSafe     Boolean  @default(false)
+  toxic       Boolean  @default(false)
+
+  images      Image[]
+  synonyms    Synonym[]
+  sources     SourceLink[]
+  tags        PlantTag[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id        String  @id @default(cuid())
+  plantId   String
+  url       String
+  width     Int?
+  height    Int?
+  credit    String?
+  license   String?
+  source    String?
+  blurHash  String?
+  Plant     Plant   @relation(fields: [plantId], references: [id], onDelete: Cascade)
+}
+
+model Synonym {
+  id      String @id @default(cuid())
+  name    String
+  plantId String
+  Plant   Plant  @relation(fields: [plantId], references: [id], onDelete: Cascade)
+}
+
+model SourceLink {
+  id      String @id @default(cuid())
+  plantId String
+  url     String
+  label   String
+  Plant   Plant  @relation(fields: [plantId], references: [id], onDelete: Cascade)
+}
+
+model PlantTag {
+  id      String @id @default(cuid())
+  plantId String
+  tag     String
+  Plant   Plant  @relation(fields: [plantId], references: [id], onDelete: Cascade)
+}

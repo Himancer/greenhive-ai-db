@@ -1,0 +1,7 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+body { @apply bg-gradient-to-br from-emerald-50 via-sky-50 to-white text-slate-800; }
