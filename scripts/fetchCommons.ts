@@ -1,5 +1,4 @@
 
-import fetch from 'node-fetch'
 type CommonsSearch = { query: { pages: Record<string, { images?: { title: string }[] }> } }
 
 export async function commonsImages(title: string) {
