@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Search, Sprout, Sun, Water, Wind, ThermometerSun, MessageCircle, Leaf, Gauge, PawPrint } from 'lucide-react'
+import { Search, Sprout, Sun, Droplet, Wind, ThermometerSun, MessageCircle, Leaf, Gauge, PawPrint } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
@@ -118,7 +118,7 @@ export default function Page() {
                 <p className="text-sm opacity-80 mb-4">{p.summary || ''}</p>
                 <div className="grid grid-cols-2 gap-2 mb-3 text-sm">
                   <div><Sun className="w-4 h-4 inline mr-1" />{p.light || '—'}</div>
-                  <div><Water className="w-4 h-4 inline mr-1" />{p.water || '—'}</div>
+                  <div><Droplet className="w-4 h-4 inline mr-1" />{p.Droplet || '—'}</div>
                   <div><Wind className="w-4 h-4 inline mr-1" />{p.humidity || '—'}</div>
                   <div><ThermometerSun className="w-4 h-4 inline mr-1" />{p.temperature || '—'}</div>
                 </div>
