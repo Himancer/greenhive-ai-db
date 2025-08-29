@@ -10,6 +10,9 @@
     "db:migrate": "prisma migrate dev --name init",
     "db:seed": "tsx scripts/seed.ts"
   },
+  {
+  "exclude": ["node_modules", "scripts/**"]
+},
   "dependencies": {
     "@prisma/client": "^5.17.0",
     "framer-motion": "^11.2.6",
