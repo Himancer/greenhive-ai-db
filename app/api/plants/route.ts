@@ -1,9 +1,11 @@
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
+import { getPrisma } from '@/lib/db'
 
 export async function GET(req: Request) {
+  const prisma = getPrisma()
   const { searchParams } = new URL(req.url)
   const q = (searchParams.get('q') || '').trim()
   const petSafe = searchParams.get('petSafe')
