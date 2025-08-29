@@ -1,9 +1,11 @@
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
+import { getPrisma } from '@/lib/db'
 
 export async function POST(req: Request) {
+  const prisma = getPrisma()
   const { q } = await req.json()
   const query = String(q || '').toLowerCase()
 
@@ -15,7 +17,7 @@ export async function POST(req: Request) {
   )
 
   if (!plant) {
-    const names = plants.slice(0, 12).map(p=>p.commonName).join(', ')
+    const names = plants.slice(0, 12).map(p => p.commonName).join(', ')
     return NextResponse.json({ answer: `I can help with ${names}. Ask e.g. "How much water for Monstera?"` })
   }
 
