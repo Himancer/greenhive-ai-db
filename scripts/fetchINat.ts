@@ -1,5 +1,5 @@
 
-import fetch from 'node-fetch'
+
 export async function iNatImages(scientific: string) {
   const url = `https://api.inaturalist.org/v1/taxa?q=${encodeURIComponent(scientific)}&photos=true`
   const res = await fetch(url).then(r => r.json())
